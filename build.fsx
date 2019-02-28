@@ -303,7 +303,7 @@ Target "PublishCode" (fun _ ->
 let mapDockerImageName (projectName:string) =
     match projectName with
     | "Lighthouse" -> Some("sharding.lighthouse")
-    | "Akka.Cluster.Sharding.Repro" -> Some("sharding.shard")
+    | "Akka.Cluster.Sharding.Repro.Node" -> Some("sharding.shard")
     | _ -> None
 
 Target "BuildDockerImages" (fun _ ->

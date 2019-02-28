@@ -2,18 +2,16 @@ version: '3'
 
 services:
   sqlserver:
-    image: microsoft/mssql-server-linux:2017-latest
+    image: sharding.sql
     hostname: sharding.sqlserver
+    build:
+      context: ./src/AkkaSql
     ports:
       - '0:1433'
     environment:
-      ACCEPT_EULA=Y
-      SA_PASSWORD=l0lTh1sIsOpenSource
-      MSSQL_PID=Developer
-    command: >
-      sh -C "sleep 90s &&
-             echo 'CREATE DATABASE Akka;' >> setup.sql &&
-             /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P $SA_PASSWORD -d master -i setup.sql"
+      ACCEPT_EULA: Y
+      SA_PASSWORD: l0lTh1sIsOpenSource
+      MSSQL_PID: Developer
 
   sharding.lighthouse:
     image: sharding.lighthouse:latest
@@ -27,7 +25,7 @@ services:
       CLUSTER_IP: "sharding.lighthouse"
       CLUSTER_SEEDS: "akka.tcp://ShardFight@sharding.lighthouse:4053"
 
-   sharding.shard:
+  sharding.shard:
     image: sharding.shard:latest
     environment:
       CLUSTER_SEEDS: "akka.tcp://ShardFight@sharding.lighthouse:4053"
@@ -35,4 +33,4 @@ services:
       SQL_CONNECTION_STR: "Server=sharding.sqlserver;Database=Akka;User Id=sa;Password=l0lTh1sIsOpenSource;"
     depends_on:
       - "sharding.lighthouse"
-      - "sharding.sqlserver"
+      - "sqlserver"
