@@ -2,9 +2,8 @@
   <PropertyGroup>
     <Copyright>Copyright © 2015-2019 Petabridge, LLC</Copyright>
     <Authors>Petabridge</Authors>
-    <VersionPrefix>0.2.3</VersionPrefix>
-    <PackageReleaseNotes>Made it possible to tag all WebCrawler docker images more easily via `build.fsx`.
-Made `build.sh` executable.</PackageReleaseNotes>
+    <VersionPrefix>0.1.0</VersionPrefix>
+    <PackageReleaseNotes>First pass.</PackageReleaseNotes>
     <PackageIconUrl>
     </PackageIconUrl>
     <PackageProjectUrl>
