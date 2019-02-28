@@ -1,4 +1,5 @@
 ﻿akka {
+    extensions = ["Akka.HealthCheck.AkkaHealthCheckExt, Akka.HealthCheck"]
     actor {
     provider = cluster
     }remote {
