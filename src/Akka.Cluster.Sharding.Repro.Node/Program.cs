@@ -14,18 +14,25 @@ namespace Akka.Cluster.Sharding.Repro.Node
         static int Main(string[] args)
         {
             var sqlConnectionString = Environment.GetEnvironmentVariable("SQL_CONNECTION_STR");
+            var sqlHostName = Environment.GetEnvironmentVariable("SQL_HOSTNAME");
             if (string.IsNullOrEmpty(sqlConnectionString) || string.IsNullOrWhiteSpace(sqlConnectionString))
             {
                 Console.WriteLine("ERROR! No SQL Connection String specified. Exiting with code -1");
                 return -1;
             }
 
+            Console.WriteLine("Connecting to SQL Server via {0}", sqlConnectionString);
+
             var config = ConfigurationFactory.ParseString(File.ReadAllText("sharding.hocon"));
 
-            var sqlConnectionConfig = ConfigurationFactory.ParseString(
-                "akka.persistence.journal.sql-server.connection-string = \"" + sqlConnectionString + "\"" +
-                Environment.NewLine +
-                "akka.persistence.snapshot-store.sql-server.connection-string = \"" + sqlConnectionString + "\"")
+            var sqlHocon = "akka.persistence.journal.sql-server.connection-string = \"" + sqlConnectionString + "\"" +
+                           Environment.NewLine +
+                           "akka.persistence.snapshot-store.sql-server.connection-string = \"" + sqlConnectionString +
+                           "\"";
+
+            Console.WriteLine("Using SQL Hocon:" + Environment.NewLine + " {0}", sqlHocon);
+
+            var sqlConnectionConfig = ConfigurationFactory.ParseString(sqlHocon)
                 .WithFallback(config);
 
             var actorSystem = ActorSystem.Create("ShardFight", sqlConnectionConfig.BootstrapFromDocker().WithFallback(ClusterSharding.DefaultConfig()));
