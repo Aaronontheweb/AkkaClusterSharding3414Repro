@@ -3,7 +3,6 @@ version: '3'
 services:
   sqlserver:
     image: sharding.sql
-    hostname: db
     build:
       context: ./src/AkkaSql
     ports:
@@ -30,8 +29,8 @@ services:
     environment:
       CLUSTER_SEEDS: "akka.tcp://ShardFight@sharding.lighthouse:4053"
       CLUSTER_PORT: 0
-      SQL_HOSTNAME: db
-      SQL_CONNECTION_STR: "Server={HOSTNAME};Database=Akka;User Id=sa;Password=l0lTh1sIsOpenSource;"
+      SQL_HOSTNAME: sqlserver
+      SQL_CONNECTION_STR: "Server=sqlserver;Database=Akka;User Id=sa;Password=l0lTh1sIsOpenSource;"
     restart: on-failure
     depends_on:
       - "sharding.lighthouse"

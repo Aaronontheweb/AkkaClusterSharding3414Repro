@@ -4,7 +4,7 @@
 /opt/mssql/bin/sqlservr &
 
 #wait for the SQL Server to come up
-sleep 15s
+sleep 25s
 
 # setup the tables
 echo "Connecting to SQL and creating Akka database."
