@@ -1,0 +1,9 @@
+FROM microsoft/mssql-server-linux:2017-latest
+
+COPY ./setup.sql .
+COPY ./setup.sh .
+
+# Grant permission on the setup script
+RUN chmod +x ./setup.sh
+
+CMD /bin/bash ./setup.sh
