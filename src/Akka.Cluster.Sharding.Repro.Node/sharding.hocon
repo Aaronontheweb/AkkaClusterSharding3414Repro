@@ -1,9 +1,7 @@
 ﻿akka {
     actor {
     provider = cluster
-    }
-            
-	remote {
+    }remote {
 		dot-netty.tcp {
 			hostname = "127.0.0.1"
 			port = 0
@@ -23,6 +21,7 @@
 
 	persistence{
 		journal {
+		    plugin = "akka.persistence.journal.sql-server"
 			sql-server {
 				# qualified type name of the SQL Server persistence journal actor
 				class = "Akka.Persistence.SqlServer.Journal.SqlServerJournal, Akka.Persistence.SqlServer"
@@ -53,6 +52,7 @@
 		}
 
 		snapshot-store {
+		    plugin = "akka.persistence.snapshot-store.sql-server"
 			sql-server {
 			
 				# qualified type name of the SQL Server persistence journal actor
