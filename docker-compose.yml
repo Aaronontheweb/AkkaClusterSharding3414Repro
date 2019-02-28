@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  sharding.lighthouse:
+    image: sharding.lighthouse:latest
+    hostname: sharding.lighthouse
+    ports:
+      - '9110:9110'
+      - '4053:4053'
+    environment:
+      ACTORSYSTEM: "ShardFight"
+      CLUSTER_PORT: 4053
+      CLUSTER_IP: "sharding.lighthouse"
+      CLUSTER_SEEDS: "akka.tcp://ShardFight@sharding.lighthouse:4053"
+
+   sharding.shard:
+    image: sharding.shard:latest
+    environment:
+      CLUSTER_SEEDS: "akka.tcp://ShardFight@sharding.lighthouse:4053"
+      CLUSTER_PORT: 0
+    depends_on:
+      - "sharding.lighthouse"
