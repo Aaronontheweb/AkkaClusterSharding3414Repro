@@ -6,4 +6,4 @@ COPY ./setup.sh .
 # Grant permission on the setup script
 RUN chmod +x ./setup.sh
 
-CMD /bin/bash ./setup.sh
+CMD /bin/bash -C './setup.sh';'bash'

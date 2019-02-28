@@ -32,7 +32,7 @@ namespace Akka.Cluster.Sharding.Repro.Node
 
             Command<string>(str =>
             {
-                if (LastSequenceNr % 10 == 0)
+                if (LastSequenceNr % 10 == 0 && LastSequenceNr > 0)
                 {
                     SaveSnapshot(_currentItems.ToArray());
                 }
