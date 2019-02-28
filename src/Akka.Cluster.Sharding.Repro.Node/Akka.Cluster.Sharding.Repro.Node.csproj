@@ -13,4 +13,10 @@
     <PackageReference Include="Akka.Bootstrap.Docker" Version="$(AkkaBootstrapVersion)" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="sharding.hocon">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

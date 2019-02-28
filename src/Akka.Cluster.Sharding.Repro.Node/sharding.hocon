@@ -1,0 +1,80 @@
+﻿akka {
+    actor {
+    provider = cluster
+    }
+            
+	remote {
+		dot-netty.tcp {
+			hostname = "127.0.0.1"
+			port = 0
+			maximum-frame-size = 256000b
+		}
+	}            
+
+	cluster {
+		#will inject this node as a self-seed node at run-time
+		seed-nodes = ["akka.tcp://webcrawler@localhost:4053"] #manually populate other seed nodes here, i.e. "akka.tcp://lighthouse@127.0.0.1:4053", "akka.tcp://lighthouse@127.0.0.1:4044"
+		roles = [shard]
+
+		sharding{
+			role = "shard"
+		}
+	}
+
+	persistence{
+		journal {
+			sql-server {
+				# qualified type name of the SQL Server persistence journal actor
+				class = "Akka.Persistence.SqlServer.Journal.SqlServerJournal, Akka.Persistence.SqlServer"
+
+				# connection string used for database access
+				connection-string = ""
+
+				# default SQL commands timeout
+				connection-timeout = 30s
+
+				# SQL server schema name to table corresponding with persistent journal
+				schema-name = dbo
+
+				# SQL server table corresponding with persistent journal
+				table-name = EventJournal
+
+				# should corresponding journal table be initialized automatically
+				auto-initialize = on
+				
+				# timestamp provider used for generation of journal entries timestamps
+				timestamp-provider = "Akka.Persistence.Sql.Common.Journal.DefaultTimestampProvider, Akka.Persistence.Sql.Common"
+
+				# metadata table
+				metadata-table-name = Metadata
+
+				sequential-access = on
+			}
+		}
+
+		snapshot-store {
+			sql-server {
+			
+				# qualified type name of the SQL Server persistence journal actor
+				class = "Akka.Persistence.SqlServer.Snapshot.SqlServerSnapshotStore, Akka.Persistence.SqlServer"
+
+				# connection string used for database access
+				connection-string = ""
+
+				# default SQL commands timeout
+				connection-timeout = 30s
+
+				# SQL server schema name to table corresponding with persistent journal
+				schema-name = dbo
+
+				# SQL server table corresponding with persistent journal
+				table-name = SnapshotStore
+
+				# should corresponding journal table be initialized automatically
+				auto-initialize = on
+
+				sequential-access = on
+			}
+		}
+	}
+}
