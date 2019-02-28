@@ -36,7 +36,7 @@ namespace Akka.Cluster.Sharding.Repro.Node
             {
                 var sharding = ClusterSharding.Get(actorSystem);
                 var myShardRegion = sharding.Start("fubers", str => Props.Create(() => new PersistentEntityActor(str)),
-                    ClusterShardingSettings.Create(actorSystem).WithRole("shards"), new FuberMessageExtractor());
+                    ClusterShardingSettings.Create(actorSystem).WithRole("shard"), new FuberMessageExtractor());
 
                 shardTask = actorSystem.Scheduler.Advanced.ScheduleRepeatedlyCancelable(TimeSpan.FromMilliseconds(250),
                     TimeSpan.FromMilliseconds(250),

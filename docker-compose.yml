@@ -6,8 +6,6 @@ services:
     hostname: sharding.sqlserver
     build:
       context: ./src/AkkaSql
-    ports:
-      - '0:1433'
     environment:
       ACCEPT_EULA: Y
       SA_PASSWORD: l0lTh1sIsOpenSource

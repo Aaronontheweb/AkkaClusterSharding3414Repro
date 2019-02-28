@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 # start SQL Server
-/opt/mssql/bin/sqlservr
+/opt/mssql/bin/sqlservr &
 
 #wait for the SQL Server to come up
-sleep 90s
+sleep 15s
 
 # setup the tables
 echo "Connecting to SQL and creating Akka database."
