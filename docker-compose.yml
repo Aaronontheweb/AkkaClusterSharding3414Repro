@@ -26,7 +26,7 @@ services:
 
   sharding.shard:
     image: sharding.shard:latest
-     ports:
+    ports:
       - '0:9110'
     environment:
       CLUSTER_SEEDS: "akka.tcp://ShardFight@sharding.lighthouse:4053"

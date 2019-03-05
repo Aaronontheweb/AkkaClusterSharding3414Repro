@@ -11,6 +11,7 @@
     <PackageReference Include="Petabridge.Cmd.Cluster" Version="$(PetabridgeCmdVersion)" />
     <PackageReference Include="Akka.Cluster.HealthCheck" Version="$(AkkaHealthCheckVersion)" />
     <PackageReference Include="Akka.Bootstrap.Docker" Version="$(AkkaBootstrapVersion)" />
+    <PackageReference Include="Petabridge.Cmd.Cluster.Sharding" Version="0.4.1-beta636873415423717289" />
   </ItemGroup>
 
   <ItemGroup>
