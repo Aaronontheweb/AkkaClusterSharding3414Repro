@@ -6,6 +6,7 @@ using Akka.Actor;
 using Akka.Bootstrap.Docker;
 using Akka.Configuration;
 using Akka.Util;
+using Akka.HealthCheck.Persistence;
 using Petabridge.Cmd.Cluster;
 using Petabridge.Cmd.Cluster.Sharding;
 using Petabridge.Cmd.Host;
