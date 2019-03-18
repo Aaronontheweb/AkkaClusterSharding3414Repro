@@ -37,3 +37,8 @@ services:
     depends_on:
       - "sharding.lighthouse"
       - "sqlserver"
+    healthcheck:
+      test: ["CMD","cat liveness.txt"]
+      interval: 30s
+      timeout: 10s
+      retries: 4
