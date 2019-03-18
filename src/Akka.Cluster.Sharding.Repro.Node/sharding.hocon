@@ -10,6 +10,14 @@
 		}
 	}            
 
+	healthcheck{
+		liveness{
+			provider = "Akka.HealthCheck.Persistence.AkkaPersistenceLivenessProbeProvider, Akka.HealthCheck.Persistence"
+			transport = file
+			file.path = "liveness.txt"
+
+		}
+	}
 	cluster {
 		#will inject this node as a self-seed node at run-time
 		seed-nodes = ["akka.tcp://webcrawler@localhost:4053"] #manually populate other seed nodes here, i.e. "akka.tcp://lighthouse@127.0.0.1:4053", "akka.tcp://lighthouse@127.0.0.1:4044"

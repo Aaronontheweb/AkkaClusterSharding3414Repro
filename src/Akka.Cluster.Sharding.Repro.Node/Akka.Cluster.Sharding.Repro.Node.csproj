@@ -7,9 +7,9 @@
 
   <ItemGroup>
     <PackageReference Include="Akka.Cluster.Sharding" Version="$(AkkaVersion)-beta*" />
+    <PackageReference Include="Akka.HealthCheck.Persistence" Version="$(AkkaHealthCheckVersion)" />
     <PackageReference Include="Akka.Persistence.SqlServer" Version="1.3.7" />
     <PackageReference Include="Petabridge.Cmd.Cluster" Version="$(PetabridgeCmdVersion)" />
-    <PackageReference Include="Akka.Cluster.HealthCheck" Version="$(AkkaHealthCheckVersion)" />
     <PackageReference Include="Akka.Bootstrap.Docker" Version="$(AkkaBootstrapVersion)" />
     <PackageReference Include="Petabridge.Cmd.Cluster.Sharding" Version="$(PetabridgeCmdVersion)-beta" />
   </ItemGroup>
