@@ -2,8 +2,8 @@
   <PropertyGroup>
     <Copyright>Copyright © 2015-2019 Petabridge, LLC</Copyright>
     <Authors>Petabridge</Authors>
-    <VersionPrefix>0.1.0</VersionPrefix>
-    <PackageReleaseNotes>First pass.</PackageReleaseNotes>
+    <VersionPrefix>0.2.0</VersionPrefix>
+    <PackageReleaseNotes>Testing coordinator failover issues using the Akka.NET v1.4.0-beta1 code.</PackageReleaseNotes>
     <PackageIconUrl>
     </PackageIconUrl>
     <PackageProjectUrl>
@@ -17,7 +17,7 @@
     <AkkaVersion>1.4.0</AkkaVersion>
     <AkkaBootstrapVersion>0.2.0</AkkaBootstrapVersion>
     <AkkaHealthCheckVersion>0.1.0</AkkaHealthCheckVersion>
-    <PetabridgeCmdVersion>0.6.1</PetabridgeCmdVersion>
+    <PetabridgeCmdVersion>0.6.2</PetabridgeCmdVersion>
     <NetCoreVersion>netcoreapp2.1</NetCoreVersion>
   </PropertyGroup>
 </Project>
