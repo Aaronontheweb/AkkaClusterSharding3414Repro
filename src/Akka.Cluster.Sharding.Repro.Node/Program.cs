@@ -8,6 +8,7 @@ using Akka.Configuration;
 using Akka.Util;
 using Petabridge.Cmd.Cluster;
 using Petabridge.Cmd.Cluster.Sharding;
+using Petabridge.Cmd.Remote;
 using Petabridge.Cmd.Host;
 
 namespace Akka.Cluster.Sharding.Repro.Node
@@ -61,6 +62,7 @@ namespace Akka.Cluster.Sharding.Repro.Node
             var pbm = PetabridgeCmd.Get(actorSystem);
             pbm.RegisterCommandPalette(ClusterCommands.Instance); // enable cluster management commands
             pbm.RegisterCommandPalette(ClusterShardingCommands.Instance); //enable cluster.sharding management commands
+            pbm.RegisterCommandPalette(RemoteCommands.Instance); // enable Akka.Remote management commands
             pbm.Start();
 
             actorSystem.WhenTerminated.Wait();

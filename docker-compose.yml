@@ -13,7 +13,7 @@ services:
       MSSQL_PID: Developer
 
   sharding.lighthouse:
-    image: sharding.lighthouse:latest
+    image: petabridge/lighthouse:latest
     hostname: sharding.lighthouse
     ports:
       - '9110:9110'
