@@ -19,7 +19,7 @@ namespace Akka.Cluster.Sharding.Repro.Node
 
     public class FuberMessageExtractor : HashCodeMessageExtractor
     {
-        public FuberMessageExtractor() : base(36)
+        public FuberMessageExtractor() : base(50)
         {
         }
 
@@ -28,6 +28,10 @@ namespace Akka.Cluster.Sharding.Repro.Node
             if (message is FuberEnvelope fuber)
             {
                 return fuber.FuberId;
+            }
+
+            if(message is ShardRegion.StartEntity e){
+                return e.EntityId;
             }
 
             return null;

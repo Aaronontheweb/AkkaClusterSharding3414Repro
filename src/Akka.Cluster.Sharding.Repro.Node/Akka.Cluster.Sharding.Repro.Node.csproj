@@ -2,16 +2,16 @@
   <Import Project="..\common.props" />
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>$(NetCoreVersion)</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Akka.Cluster.Sharding" Version="$(AkkaVersion)-beta" />
-    <PackageReference Include="Akka.Persistence.SqlServer" Version="$(AkkaVersion)" />
+    <PackageReference Include="Akka.Cluster.Sharding" Version="$(AkkaVersion)" />
+    <PackageReference Include="Akka.Persistence.SqlServer" Version="1.4.16" />
     <PackageReference Include="Petabridge.Cmd.Cluster" Version="$(PetabridgeCmdVersion)" />
     <PackageReference Include="Akka.Cluster.HealthCheck" Version="$(AkkaHealthCheckVersion)" />
     <PackageReference Include="Akka.Bootstrap.Docker" Version="$(AkkaBootstrapVersion)" />
-    <PackageReference Include="Petabridge.Cmd.Cluster.Sharding" Version="$(PetabridgeCmdVersion)-beta" />
+    <PackageReference Include="Petabridge.Cmd.Cluster.Sharding" Version="$(PetabridgeCmdVersion)" />
   </ItemGroup>
 
   <ItemGroup>

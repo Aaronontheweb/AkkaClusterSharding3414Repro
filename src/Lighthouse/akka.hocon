@@ -35,5 +35,9 @@ akka {
     #will inject this node as a self-seed node at run-time
     seed-nodes = [] 
     roles = [lighthouse]
+    downing-provider-class = "Akka.Cluster.SBR.SplitBrainResolverProvider, Akka.Cluster"
+    split-brain-resolver {
+      active-strategy = keep-majority
+    }
   }
 }

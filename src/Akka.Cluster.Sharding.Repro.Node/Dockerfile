@@ -1,4 +1,4 @@
-FROM microsoft/dotnet:2.1-sdk AS base
+FROM mcr.microsoft.com/dotnet/sdk:2.1 AS base
 WORKDIR /app
 
 # should be a comma-delimited list
@@ -17,7 +17,7 @@ ENV PATH="${PATH}:/root/.dotnet/tools"
 
 COPY ./bin/Release/netcoreapp2.1/publish/ /app
 
-FROM microsoft/dotnet:2.1-runtime AS app
+FROM mcr.microsoft.com/dotnet/runtime:2.1 AS app
 WORKDIR /app
 
 COPY --from=base /app /app

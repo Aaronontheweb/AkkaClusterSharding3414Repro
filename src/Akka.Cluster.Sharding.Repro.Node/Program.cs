@@ -47,14 +47,14 @@ namespace Akka.Cluster.Sharding.Repro.Node
             Cluster.Get(actorSystem).RegisterOnMemberUp(() =>
             {
                 var sharding = ClusterSharding.Get(actorSystem);
-                var myShardRegion = sharding.Start("fubers", str => Props.Create(() => new PersistentEntityActor(str)),
+                IActorRef myShardRegion = sharding.Start("entities", str => Props.Create(() => new PersistentEntityActor(str)),
                     ClusterShardingSettings.Create(actorSystem).WithRole("shard"), new FuberMessageExtractor());
 
                 shardTask = actorSystem.Scheduler.Advanced.ScheduleRepeatedlyCancelable(TimeSpan.FromMilliseconds(250),
                     TimeSpan.FromMilliseconds(250),
                     () =>
                     {
-                        myShardRegion.Tell(new FuberEnvelope(ThreadLocalRandom.Current.Next(0, 200).ToString(), ThreadLocalRandom.Current.Next().ToString()));
+                        myShardRegion.Tell(new FuberEnvelope(ThreadLocalRandom.Current.Next(0, 100000).ToString(), ThreadLocalRandom.Current.Next().ToString()));
                     });
             });
 

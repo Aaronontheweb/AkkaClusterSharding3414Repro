@@ -1,4 +1,4 @@
-FROM microsoft/dotnet:2.1-sdk AS base
+FROM mcr.microsoft.com/dotnet/sdk:2.1 AS base
 WORKDIR /app
 
 # should be a comma-delimited list

@@ -2,7 +2,8 @@
     extensions = ["Akka.HealthCheck.AkkaHealthCheckExt, Akka.HealthCheck"]
     actor {
     provider = cluster
-    }remote {
+    }
+	remote {
 		dot-netty.tcp {
 			hostname = "127.0.0.1"
 			port = 0
@@ -16,7 +17,14 @@
 		roles = [shard]
 
 		sharding{
+			state-store-mode = "ddata"
 			role = "shard"
+			remember-entities = true
+		}
+
+		downing-provider-class = "Akka.Cluster.SBR.SplitBrainResolverProvider, Akka.Cluster"
+		split-brain-resolver {
+			active-strategy = keep-majority
 		}
 	}
 
